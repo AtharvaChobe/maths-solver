@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: maths-solver
+    image: maths-solver-image
+    build:
+      context: .
+      target: production
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 5173:5173

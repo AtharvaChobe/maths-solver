@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body, html{
-    @apply bg-orange-50;
+    @apply bg-white;
     font-family: "Raleway", sans-serif;
 }
