@@ -10,13 +10,11 @@ const App = () => {
   const [file, setFile] = useState(null);
   const [fileURL, setFileURL] = useState(null);
   const [Prompt, setPrompt] = useState();
-
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
     setFileURL(URL.createObjectURL(selectedFile));
   };
-
   const fileToGenerativePart = (file, mimeType) => {
     return {
       inlineData: {
@@ -25,7 +23,6 @@ const App = () => {
       },
     };
   };
-
   const handleRun = async () => {
     if (!Prompt || !file) {
       toast.error("Please enter all fields");
@@ -50,7 +47,6 @@ const App = () => {
       setIsLoading(false);
     }
   };
-
   const readFileAsBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -59,15 +55,15 @@ const App = () => {
       reader.readAsDataURL(file);
     });
   };
-
-
   return (
     <div className="w-full h-fit flex items-center flex-col gap-5 justify-center p-8">
+      {/* heading */}
       <div className="mx-auto text-center pb-2 font-bold text-slate-400 md:text-3xl">
         Solve maths using
-        <h1 className="text-3xl text-black font-bold inline"> math.<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">ai</span></h1>
+        <h1 className="text-3xl text-black font-bold inline"> maths.<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">ai</span></h1>
       </div>
       <div className="w-full h-fit flex flex-wrap md:flex-nowrap items-center gap-5 justify-center">
+        {/* input */}
         <div className="border-2 md:w-[70%] w-full flex flex-col gap-3 items-center justify-center border-dotted rounded-md shadow p-3 bg-gray-50">
           <input
             className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 mb-4 p-2"
@@ -89,14 +85,14 @@ const App = () => {
             {isLoading ? "Finding..." : "Run"}
           </button>
         </div>
-
+        {/* output */}
         {isLoading ? (
           <div className="border-2 bg-gray-50 w-full min-h-80 flex items-center justify-center border-dotted rounded-md shadow p-3">
             <Spinner />
           </div>
         ) : (
-          <div className="border-2 bg-gray-50 overflow-auto w-full min-h-80 border-dotted rounded-md shadow p-3">
-            <pre>{output}</pre>
+          <div className="border-2 bg-gray-50 overflow-auto w-full min-h-80 border-dotted rounded-md shadow p-4">
+            <pre className="whitespace-pre-line text-justify">{output}</pre>
           </div>
         )}
       </div>

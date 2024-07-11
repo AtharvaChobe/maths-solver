@@ -8,7 +8,7 @@ import Navbar from './Navbar.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Toaster
-      position="top-right"
+      position="top-center"
       reverseOrder={false}
     />
     <Navbar/>
